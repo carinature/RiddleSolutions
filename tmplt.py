@@ -21,13 +21,14 @@
 #     1 <= nums.length <= 104
 #     -231 <= nums[i] <= 231 - 1
 
+
 import timeit
-from typing import List, Optional
+from typing import List, Optional, Set
 
 
 def some_function(nums: Optional[int]) -> Optional[int]:
     """
-    Do not return anything, modify nums in-place instead.
+    The best way to get ahead is to get starting..?
     """
     return 124356
 
