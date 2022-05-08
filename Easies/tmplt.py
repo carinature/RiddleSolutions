@@ -47,15 +47,15 @@ def some_function(nums: Optional[int]) -> Optional[int]:
 
 def testing():
     result = some_function(nums=124356)
-    print(f"result: {result}")
+    # print(f"result: {result}")
     assert (124356 == result)
 
     result = some_function(nums=124356)
-    print(f"result: {result}")
+    # print(f"result: {result}")
     assert (124356 == result)
 
     result = some_function(nums=124356)
-    print(f"result: {result}")
+    # print(f"result: {result}")
     assert (124356 == result)
 
 
