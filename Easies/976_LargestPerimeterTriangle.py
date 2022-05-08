@@ -48,17 +48,6 @@ def largestPerimeter(nums: List[int]) -> int:
     # if all 3 conditions are met return P
     # else  b,c <-- a,b
 
-    # # algebraic
-    max = 0
-    max_group:set = set()
-    for i, n in nums:
-        if n > max:
-            if max:
-                max_group.add(max)
-            # index, max = i, n
-            max = nums.pop(i)
-
-
     # # pythonic
     a = max(nums)
     nums.pop(nums.index(a))
@@ -70,6 +59,16 @@ def largestPerimeter(nums: List[int]) -> int:
         if a < b + c:  return a + b + c
         a, b = b, c
     return 0
+
+    # # # algebraic
+    # max_e = 0
+    # max_group:set = set()
+    # for i, n in nums:
+    #     if n > max_e:
+    #         if max_e:
+    #             max_group.add(max_e)
+    #         # index, max = i, n
+    #         max_e = nums.pop(i)
 
 
 def testing():
