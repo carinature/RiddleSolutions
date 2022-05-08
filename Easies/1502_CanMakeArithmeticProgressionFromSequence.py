@@ -37,7 +37,8 @@ from math import prod
 from typing import List, Optional, Set
 
 
-def canMakeArithmeticProgression(arr: List[int]) -> int:
+def canMakeArithmeticProgression(arr: List[int]) -> bool:
+    # solution 1 - using sort
     arr.sort()
     d = arr[1] - arr[0]
     for i in range(2, len(arr)):
@@ -45,11 +46,12 @@ def canMakeArithmeticProgression(arr: List[int]) -> int:
             return False
     return True
 
+    # solution 2 - using sort, no if's
     # arr.sort()
     # d = arr[1] - arr[0]
-    # return 0 == prod([arr[i] - d * i - arr[0] for i in range(1, len(arr))])
+    # return 0 == sum([arr[i] - arr[i - 1] - d for i in range(1, len(arr))])
 
-    # print(f'arr {arr}')
+    #   todo    There is a better solution, in O(n) time ( & O(1) spcae? )
 
 
 def testing():
