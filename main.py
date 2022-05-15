@@ -9,9 +9,22 @@ def print_hi(name):
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
+
+    x = 3
+    while x < 6:
+        print(f"shishlik {x}")
+        x += 1
+    else:
+        print("kebab")
+
+    print()
+
+    for i in range(1, 8, 2):
+        print(f"shishlik {i}")
+    else:
+        print("kebab")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
