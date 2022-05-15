@@ -58,12 +58,11 @@ def sumOddLengthSubarrays(arr: List[int]) -> int:
     """
     #   fixme there's a much more efficient solution
     return sum(
+        [sum(
             [sum(
-                [sum(
-                    arr[i:i + l])
-                    for i in range(len(arr) - l + 1)])
-                for l in range(1, len(arr) + 1, 2)])
-
+                arr[i:i + l])
+                for i in range(len(arr) - l + 1)])
+            for l in range(1, len(arr) + 1, 2)])
 
 
 def testing():
