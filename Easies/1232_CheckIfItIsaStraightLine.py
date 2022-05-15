@@ -53,6 +53,7 @@ def checkStraightLine(coordinates: List[List[int]]) -> bool:
         if m * (x - xx) - y + yy:
             return False
     return True
+    # todo can do better
 
 
 def testing():

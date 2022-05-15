@@ -62,6 +62,8 @@ def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
     return [next((n2 for n2 in nums2[nums2.index(n1) + 1:] if n2 > n1), -1)
             for n1 in nums1]
 
+    # fixme find  O(nums1.length + nums2.length)  solution
+
 
 def testing():
     result = nextGreaterElement(nums1=[4, 1, 2], nums2=[1, 3, 4, 2])
