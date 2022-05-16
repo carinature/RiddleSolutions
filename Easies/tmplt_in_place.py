@@ -54,7 +54,7 @@ class ListNode:
         return True
 
 
-def some_function(nums: List[int]) -> None:
+def some_function(nums: 'ListNode') -> None:
     """
     Do not return anything, modify nums in-place instead.
     """
