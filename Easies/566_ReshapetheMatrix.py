@@ -48,21 +48,28 @@ def matrixReshape(mat: List[List[int]], r: int, c: int) -> List[List[int]]:
     The best way to get ahead is to get starting..?
     """
 
+    # try:
+
     m, n = len(mat), len(mat[0])
-    print(f'm {m}, n {n}')
-    # maybe not necessary :
-    if m * n - r * c:
-        return mat
+    res: List[List[int]] = [[-1001] * c for _ in range(r)]
 
+    # fixme this next line causes some weird bug, during items assignment:
+    #  if you do res[0][0]=x then x will be put in all res[*][0]
+    #   WORTH CHECKING
+    # res: List[List[int]] = [[-1001] * c] * r
 
-    # # newmat = [mat[i][j] for i in range(m) for j in range(n)]
-    # newmat: List[List[int]] = [[-1001] * n] * m
-    # print(f'newmat - {newmat}')
-    # for i in range(m):
-    #     for j in range(n):
-    #         # row, col = divmod(i * n + j, c)
-    #         newmat[row][col] = mat[i][j]
-    # return newmat
+    if m * n - r * c: return mat
+    for i in range(m * n):
+        res [i // c] [i % c] = mat [i // n] [i % n]
+    return res
+
+    # except IndexError as e:
+    #     print(f'e - {e}')
+    #     print(f'i - {i}')
+    #     print(f'res - {res}')
+    #     print(f'res[i // c][i % c] - res{[i // c]}{[i % c]} = {res[i // c][i % c]}')
+    #     print(f'mat[i // n][i % n] - mat{[i // n]}{[i % n]} = {mat[i // n][i % n]}')
+    #     return res
 
 
 def testing():
@@ -75,7 +82,7 @@ def testing():
     assert ([[1, 2], [3, 4]] == result)
 
     result = matrixReshape(mat=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]], r=2, c=6)
-    # print(f"result: {result}")
+    print(f"result: {result}")
     assert ([[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12]] == result)
 
 
