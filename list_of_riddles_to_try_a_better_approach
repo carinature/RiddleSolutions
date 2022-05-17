@@ -1,9 +1,13 @@
 191. Number of 1 Bits (checkout the Efficient_implementation https://en.wikipedia.org/wiki/Hamming_weight#Efficient_implementation)
+389. Find the Difference
 496. Next Greater Element I
+566. Reshape the Matrix
 589. N-ary Tree Preorder Traversal (iteration over recursion)
 1232. Check If It Is a Straight Line
+1290. Convert Binary Number in a Linked List to Integer
+1356. Sort Integers by The Number of 1 Bits
 1588. Sum of All Odd Length Subarrays
 1790. check if one string swap can make strings equal (algorithm with a better complexity)
-389. Find the Difference
-1290. Convert Binary Number in a Linked List to Integer
-566. Reshape the Matrix
+
+
+
