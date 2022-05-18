@@ -1,6 +1,6 @@
 191. Number of 1 Bits (checkout the Efficient_implementation https://en.wikipedia.org/wiki/Hamming_weight#Efficient_implementation)
 389. Find the Difference
-496. Next Greater Element I
+496. Next Greater Element I - understand dict
 566. Reshape the Matrix
 589. N-ary Tree Preorder Traversal (iteration over recursion)
 1232. Check If It Is a Straight Line
