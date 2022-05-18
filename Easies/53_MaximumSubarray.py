@@ -1,5 +1,6 @@
 #
 #   Date - 01.02.2022
+#   Date - 18.05.2022
 #
 #
 # Given an integer array nums, find the contiguous subarray (containing at least one number)
@@ -43,24 +44,22 @@ from typing import List, Optional, Tuple
 
 
 def maxSubArray(nums: List[int]) -> int:
-    sum_left: int = 0
-    sum_right: int = 0
-    left_max: Tuple[int, int] = (0, nums[0])
-    right_max: Tuple[int, int] = (len(nums) - 1, nums[-1])
-
-    for i, n in enumerate(nums):
-        sum_left += n
-        if sum_left >= left_max[1]:
-            left_max = (i, sum_left)
-
-    for i, n in enumerate(nums[::-1]):
-        sum_right += n
-        if sum_right >= right_max[1]:
-            right_max = (i, sum_right)
-
-    return sum(nums[~ right_max[0]: left_max[0] + 1]) \
-        if len(nums) - 1 - right_max[0] < left_max[0]+1 \
-        else max(nums[left_max[0]], nums[~ right_max[0]])
+    pass
+    # if len(nums) == 1:
+    #     return nums[0]
+    #
+    # sums: List[int] = [0] * (len(nums)+1)
+    #
+    # for i in range(1, 1+len(nums)):
+    #     sums[i] = sums[i-1] + nums[i-1]
+    #
+    # mx = max(sums[1:])
+    # mn = min(sums[: sums.index(mx)])
+    # imn = sums.index(mn)
+    #
+    # # return mx-sums[imn-1]
+    # # return mx-nums[imn]
+    # return mx-mn
 
 
 def testing():
@@ -75,6 +74,10 @@ def testing():
     result = maxSubArray(nums=[5, 4, -1, 7, 8])
     print(f"result: {result}")
     assert (23 == result)
+
+    result = maxSubArray(nums=[-1])
+    print(f"result: {result}")
+    assert (-1 == result)
 
     result = maxSubArray(nums=[-2, -1])
     print(f"result: {result}")

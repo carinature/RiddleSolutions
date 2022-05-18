@@ -1,5 +1,7 @@
+53. Maximum Subarray    # better not start with this one
 104. Maximum Depth of Binary Tree       #   good for recursive vs iterative (and maybe for building binary tree (not AVL))
 232. Implement Queue using Stacks   # good explanation for amortized times by using 2 almost identical, yet different, examples
+303. Range Sum Query - Immutable
 496. Next Greater Element I
 566. Reshape the Matrix (worth checking this post: https://leetcode.com/problems/reshape-the-matrix/discuss/102500/Python-Solutions)
 589. N-ary Tree Preorder Traversal

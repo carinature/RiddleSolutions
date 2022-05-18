@@ -1,3 +1,4 @@
+53. Maximum Subarray    # better not start with this one
 191. Number of 1 Bits (checkout the Efficient_implementation https://en.wikipedia.org/wiki/Hamming_weight#Efficient_implementation)
 389. Find the Difference
 496. Next Greater Element I - understand dict
