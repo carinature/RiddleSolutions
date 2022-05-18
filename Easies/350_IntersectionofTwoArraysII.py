@@ -28,7 +28,7 @@
 #
 #
 #
-# Follow up:
+# Follow up: #todo
 #
 #     What if the given array is already sorted? How would you optimize your algorithm?
 #     What if nums1's size is small compared to nums2's size? Which algorithm is better?
@@ -42,12 +42,27 @@ from typing import List, Optional
 
 
 def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
-    result = []
-    # for i in range(len(nums1)):
-    #     for j in range(i, len(nums2)):
-    #         if
 
-    # dct = dict(nums1.__dict__)
+    if not nums1 or not nums2: return []
+    nums1.sort()
+    nums2.sort()
+    i, j = 0, 0
+    res: List[int] = []
+    while i < len(nums1) and j < len(nums2):
+        if nums1[i] > nums2[j]:
+            j += 1
+
+        elif nums1[i] < nums2[j]:
+            i += 1
+
+        else:
+            res.append(nums1[i])
+            i += 1
+            j += 1
+
+    return res
+
+    # todo - *after* solving, consider also *all* the follow-up questions
 
 
 def testing():
