@@ -36,7 +36,8 @@
 
 from math import prod
 import timeit
-from typing import List, Optional, Set
+from typing import List, Optional, Set, Dict
+from collections import defaultdict
 
 
 def some_function(nums: Optional[int]) -> Optional[int]:
