@@ -1,5 +1,5 @@
 #
-#   Date - 01.02.2022
+#   Date - 18.05.2022
 #
 #
 # 242. Valid Anagram
@@ -31,6 +31,7 @@
 #
 #
 #
+import collections
 from collections import defaultdict, Counter
 from math import prod
 import timeit
@@ -41,13 +42,13 @@ def some_function(s: str, t: str) -> bool:
     """
     The best way to get ahead is to get starting..?
     """
-    # # # Solution 1 - Pythonic
-    return sorted(s) == sorted(t)
+    # # #     Solution 1 - Pythonic
+    # return sorted(s) == sorted(t)
 
-    # # Soltion 2 - Algorithmic
+    # # # #     Soltion 2 - Algorithmic
     # if len(s) - len(t):
     #     return False
-    # d = defaultdict(int)
+    # d = collections.defaultdict(int)
     # for c in s:
     #     d[c] += 1
     # for c in t:
@@ -55,6 +56,12 @@ def some_function(s: str, t: str) -> bool:
     #     if d[c] < 0:
     #         return False
     # return True
+
+    # # #     Soltion 2.2 - Algorithmic
+    # for x, y in zip(s, t):
+    #     d[x] += 1
+    #     d[y] -= 1
+    # return all(v == 0 for v in d.values())
 
 
 def testing():
