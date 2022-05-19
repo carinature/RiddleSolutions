@@ -11,7 +11,7 @@ import timeit
 from typing import List, Optional, Set, Dict
 
 
-# very slow and O(n^2) worst case
+# input is a SORTED array, O(logN)
 def binary_search(l: List[int], e: int):
     left, right = 0, len(l)
     while left <= right:
