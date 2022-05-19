@@ -3,9 +3,14 @@
 #
 #
 # BFS
-#
+#   Breadth First Search
+#   remove node from the front of the line
+#   add all it's child nodes to the end of the line
 #
 # DFS
+#   Breadth First Search
+#   remove node from the back of the line, and explore the next
+#   add all it's child nodes to the end of the line
 #
 #
 #
