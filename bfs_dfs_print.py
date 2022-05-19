@@ -19,6 +19,7 @@ def bfs_print(graph: Dict[str, list], start_node: str):
     """
     The best way to get ahead is to get starting..?
     """
+    print(' --- bfs_print --- ')
     seen: List[str] = []
     unseen: List[str] = [start_node]  # Queue
     while unseen:
@@ -27,7 +28,26 @@ def bfs_print(graph: Dict[str, list], start_node: str):
             print(node)
             seen.append(node)
         unseen.extend(graph[node])
+    print(' ----------------- ')
     return
+
+
+def dfs_print(graph: Dict[str, list], start_node: str):
+    """
+    The best way to get ahead is to get starting..?
+    """
+    print(' --- dfs_print --- ')
+    seen: List[str] = []
+    unseen: List[str] = [start_node]  # Stack
+    while unseen:
+        node = unseen.pop()
+        if node not in seen:
+            print(node)
+            seen.append(node)
+        unseen.extend(reversed(graph[node]))
+    print(' ----------------- ')
+    return
+
 
 
 def testing():
@@ -42,6 +62,7 @@ def testing():
     }
 
     bfs_print(graph, 'a')
+    dfs_print(graph, 'a')
 
     # result = some_function(nums=124356)
     # print(f"result: {result}")
