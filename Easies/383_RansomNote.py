@@ -51,12 +51,22 @@ class Solution:
         # # # Solution 1 - Pythonic using Counter
         # return all(collections.Counter(magazine)[c] >= n for c, n in collections.Counter(ransomNote).items())
 
-        # # # Solution 2 - Pythonic using str.replace
+        # # # Solution 1.2 - Pythonic using Counter
+        # return not collections.Counter(ransomNote) - collections.Counter(magazine)
+
+        # # # Solution 2 - Pythonic using str.replace - fastest
         for c in ransomNote:
             if c not in magazine:
                 return False
             magazine = magazine.replace(c, '', 1)
         return True
+
+
+        # for i in set(ransomNote):
+        #     if ransomNote.count(i) > magazine.count(i):
+        #         return False
+        # return True
+
 
 
 def testing():
