@@ -41,23 +41,28 @@ from typing import List, Optional, Set, Dict
 import collections
 
 
-def some_function(nums: Optional[int]) -> Optional[int]:
-    """
-    The best way to get ahead is to get starting..?
-    """
-    return 124356
+class Solution:
+
+
+    def some_function(self, nums: Optional[int]) -> Optional[int]:
+        """
+        The best way to get ahead is to get starting..?
+        """
+        return 124356
 
 
 def testing():
-    result = some_function(nums=124356)
+    sol = Solution()
+    
+    result = sol.some_function(nums=124356)
     # print(f"result: {result}")
     assert (124356 == result)
 
-    result = some_function(nums=124356)
+    result = sol.some_function(nums=124356)
     # print(f"result: {result}")
     assert (124356 == result)
 
-    result = some_function(nums=124356)
+    result = sol.some_function(nums=124356)
     # print(f"result: {result}")
     assert (124356 == result)
 
