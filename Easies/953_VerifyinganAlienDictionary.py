@@ -76,6 +76,10 @@ class Solution:
         #         plus the complexity isn't really O(N*L)
 
 
+        #    todo checkout these solutions:
+        #     https://leetcode.com/problems/verifying-an-alien-dictionary/discuss/203185/JavaC%2B%2BPython-Mapping-to-Normal-Order
+        #     https://leetcode.com/problems/verifying-an-alien-dictionary/discuss/203175/Python-straightforward-solution
+
 def testing():
     sol = Solution()
 
