@@ -53,6 +53,14 @@ class ListNode:
                 return False
         return True
 
+    def __repr__(self):
+        tail: ListNode = self
+        res: List[str] = []
+        while tail:
+            res.append(str(tail.val))
+            tail = tail.next
+        return ' --> '.join(res)
+
 
 class Solution:
     def some_function(self, nums: Optional['ListNode']) -> None:
