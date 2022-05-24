@@ -44,7 +44,7 @@ import collections
 class Solution:
     def toLowerCase(self, s: str) -> str:
         # # # Solution 1
-        # return ''.join([chr(ord(c) + 32) if 'A' <= c <= 'Z' else c for c in s])
+        return ''.join(chr(ord(c) + 32) if 'A' <= c <= 'Z' else c for c in s)
 
         # # # Solution 2 - with dict - slower
         # d = {chr(i + 97 - 32): chr(i + 97) for i in range(26)}
@@ -53,7 +53,7 @@ class Solution:
         # return s
 
         # # # Solution 3 - pythonic
-        return s.lower()
+        # return s.lower()
 
 
 def testing():
