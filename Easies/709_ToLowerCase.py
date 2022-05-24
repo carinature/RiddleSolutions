@@ -43,19 +43,24 @@ import collections
 
 class Solution:
     def toLowerCase(self, s: str) -> str:
-        # res = []
-        # for c in s:
-        #     if 'A'<= c and c<='Z':
-        #         c = chr(ord(c)+32)
-        #     res.append(c)
-        return ''.join([chr(ord(c) + 32) if 'A' <= c <= 'Z' else c for c in s])
+        # # # Solution 1
+        # return ''.join([chr(ord(c) + 32) if 'A' <= c <= 'Z' else c for c in s])
+
+        # # # Solution 2 - with dict - slower
+        # d = {chr(i + 97 - 32): chr(i + 97) for i in range(26)}
+        # for c in d:
+        #     s = s.replace(c, d[c])
+        # return s
+
+        # # # Solution 3 - pythonic
+        return s.lower()
 
 
 def testing():
     sol = Solution()
 
     result = sol.toLowerCase(s="Hello")
-    print(f"result: {result}")
+    # print(f"result: {result}")
     assert ('hello' == result)
 
     result = sol.toLowerCase(s='here')
