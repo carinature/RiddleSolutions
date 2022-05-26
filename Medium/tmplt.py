@@ -42,18 +42,17 @@ import collections
 
 
 class Solution:
-
-
     def some_function(self, nums: Optional[int]) -> Optional[int]:
         """
         The best way to get ahead is to get starting..?
         """
+        print(f'nums: {nums}')
         return 124356
 
 
 def testing():
     sol = Solution()
-    
+
     result = sol.some_function(nums=124356)
     # print(f"result: {result}")
     assert (124356 == result)
