@@ -57,23 +57,30 @@ from math import prod
 import timeit
 from typing import List, Optional, Set
 
+# todo https://leetcode.com/problems/implement-queue-using-stacks/solution/
 
 class MyQueue:
 
     def __init__(self):
-        pass
+        self.spush, self.speek = [], []
 
     def push(self, x: int) -> None:
-        pass
+        while self.speek:
+            self.spush.append(self.speek.pop())
+        self.spush.append(x)
 
     def pop(self) -> int:
-        pass
+        while self.spush:
+            self.speek.append(self.spush.pop())
+        return self.speek.pop()
 
     def peek(self) -> int:
-        pass
+        while self.spush:
+            self.speek.append(self.spush.pop())
+        return self.speek[-1]
 
     def empty(self) -> bool:
-        pass
+        return not self.speek and not self.spush
 
 
 def testing():
