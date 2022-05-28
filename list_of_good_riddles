@@ -1,3 +1,4 @@
+34. Find First and Last Position of Element in Sorted Array
 53. Maximum Subarray    # better not start with this one
 104. Maximum Depth of Binary Tree       #   good for recursive vs iterative (and maybe for building binary tree (not AVL))
 232. Implement Queue using Stacks   # good explanation for amortized times by using 2 almost identical, yet different, examples
