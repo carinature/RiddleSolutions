@@ -47,7 +47,22 @@ import collections
 
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
+        # # Sulution 1 -  Pythonic
         return (len(nums) + 1) * len(nums) // 2 - sum(nums)
+
+        # # Sulution 2 - Algorithmic - slower
+        # nums.append(100000)
+        # nums.sort()
+        # for i in range(len(nums)):
+        #     if nums[i] != i:
+        #         return i
+
+        # todo  - checkout this:
+        #         https://leetcode.com/problems/missing-number/discuss/69832/1%2B-lines-Ruby-Python-Java-C%2B%2B
+        #   specifically:
+        #       def missingNumber(self, nums):
+        #     n = len(nums)
+        #     return reduce(operator.xor, nums) ^ [n, 1, n+1, 0][n % 4]
 
 
 def testing():
