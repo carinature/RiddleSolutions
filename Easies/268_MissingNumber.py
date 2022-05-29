@@ -1,5 +1,5 @@
 #
-#   Date - 01.02.2022
+#   Date - 28.05.2022
 #
 #
 # 268. Missing Number
@@ -61,8 +61,8 @@ class Solution:
         #         https://leetcode.com/problems/missing-number/discuss/69832/1%2B-lines-Ruby-Python-Java-C%2B%2B
         #   specifically:
         #       def missingNumber(self, nums):
-        #     n = len(nums)
-        #     return reduce(operator.xor, nums) ^ [n, 1, n+1, 0][n % 4]
+        #           n = len(nums)
+        #           return reduce(operator.xor, nums) ^ [n, 1, n+1, 0][n % 4]
 
 
 def testing():

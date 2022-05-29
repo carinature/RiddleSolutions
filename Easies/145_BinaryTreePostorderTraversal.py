@@ -73,25 +73,25 @@ class TreeNode:
 
 
 class Solution:
-    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
+        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
 
 
 def testing():
     sol = Solution()
 
     root = [1, None, 2, 3]
-    sol.preorderTraversal(TreeNode.create_tree(root))
+    sol.postorderTraversal(TreeNode.create_tree(root))
     assert ([1, 2, 3] == root)
 
     root = []
-    sol.preorderTraversal(TreeNode.create_tree(root))
+    sol.postorderTraversal(TreeNode.create_tree(root))
     assert ([] == root)
 
     root = [1]
-    sol.preorderTraversal(TreeNode.create_tree(root))
+    sol.postorderTraversal(TreeNode.create_tree(root))
     assert ([1] == root)
 
     # root = [0, 0]

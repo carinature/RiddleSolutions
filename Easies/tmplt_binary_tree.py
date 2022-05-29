@@ -28,7 +28,6 @@ import timeit
 from typing import List, Optional
 
 
-
 # Definition for singly-linked list.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
