@@ -1,4 +1,5 @@
 # Fibonacci in Dynamic Programing
+import collections
 import timeit
 from typing import Dict
 
@@ -11,19 +12,9 @@ def fibonacci(n: int) -> int:
 
 
 # Solution 2 - Recursive with Memoization - O(n)
-
-# def fibonacci(n: int, memo=None) -> int:
-#     if memo is None:
-#         memo = {}
-
-def fibonacci(n: int, memo: Dict[int, int] = dict()) -> int:
+def fibonacci(n: int, memo={0: 0, 1: 1}) -> int:
     if n in memo:
         return memo[n]
-    if n <= 1:  # todo maybe safer   n==0 or n=1    ?
-        memo[n] = n
-        # return memo[n]
-        return n
-    # memo[n] = fibonacci(n - 1) + fibonacci(n - 2)
     memo[n] = fibonacci(n - 2) + fibonacci(n - 1)
     return memo[n]
 
@@ -41,7 +32,7 @@ def testing():
 
 if __name__ == '__main__':
     print("\n Finished in --- %.5f seconds ---" %
-          (timeit.timeit(testing, number=1000000)))
+          (timeit.timeit(testing, number=10)))
 
 #
 #
