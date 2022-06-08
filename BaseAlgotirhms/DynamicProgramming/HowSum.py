@@ -1,60 +1,65 @@
-# CanSum in Dynamic Programing
+# HowSum in Dynamic Programing
 # return True if target_sum can be constructed from any combination of array numbers (all positive)
 #
 
 import timeit
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Optional
 
 
 # # # Solution 1 - Recursive (Naive) - O(2^(n+m) )
-def CanSum(target_sum: int, arr: List[int]) -> bool:
-    # Tnai Azira
-    if 0 == target_sum:
-        return True
-    if 0 > target_sum:
-        return False
+def HowSum(target_sum: int, arr: List[int]) -> Optional[List[int]]:
+    if target_sum == 0:
+        return []
+    if target_sum < 0:
+        return None
     for num in arr:
-        if CanSum(target_sum - num, arr):
-            return True
-    return False
+        res = HowSum(target_sum - num, arr)
+        if None != res:
+            res.append(num)
+            return res
+    return None
 
 
 # # # Solution 2 - Recursive with Memoization - O(n)
-def CanSum(target_sum: int, arr: List[int], memo=None) -> bool:
+def HowSum(target_sum: int, arr: List[int], memo=None) -> Optional[List[int]]:
     if memo is None:
-        memo: Set[int] = set()  # Dict[int, bool] = dict()
+        memo: Dict[int, List[int]] = dict()
 
-    if target_sum in memo: return False
-    if 0 == target_sum: return True
-    if 0 > target_sum: return False
+    if target_sum in memo: return memo[target_sum]
+    if target_sum == 0: return []
+    if target_sum < 0: return None
 
     for num in arr:
-        new_target = target_sum - num
-        if CanSum(new_target, arr, memo):
-            return True
-
-    memo.add(target_sum)
-    return False
+        res = HowSum(target_sum - num, arr, memo)
+        if None != res:
+            memo[target_sum] = res + [num]
+            return memo[target_sum]
+    memo[target_sum] = None
+    return None
 
 
 def testing():
-    result = CanSum(7, [5, 3, 4, 7])
-    assert (True == result)
+    result = HowSum(7, [5, 3, 4])
+    assert ([4, 3] == result)
 
-    result = CanSum(7, [5, 3, 4])
-    assert (True == result)
+    result = HowSum(0, [5, 3, 4])
+    assert ([] == result)
 
-    result = CanSum(7, [5, 7])
-    assert (True == result)
+    result = HowSum(7, [5, 7])
+    # print(f'result: {result}')
+    assert ([7] == result)
 
-    result = CanSum(7, [2, 4])
-    assert (False == result)
+    result = HowSum(7, [5, 3, 4, 7])
+    assert ([7] == result or [4, 3] == result)
 
-    result = CanSum(8, [2, 3, 5])
-    assert (True == result)
+    result = HowSum(7, [2, 4])
+    assert (None == result)
 
-    result = CanSum(300, [7, 14])
-    assert (False == result)
+    result = HowSum(8, [2, 3, 5])
+    assert ([2, 2, 2, 2] == result or [5, 3] == result)
+
+    result = HowSum(300, [7, 14])
+    assert (None == result)
 
 
 if __name__ == '__main__':
