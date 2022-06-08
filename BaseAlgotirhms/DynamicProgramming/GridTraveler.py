@@ -62,21 +62,13 @@ if __name__ == '__main__':
 #
 #
 #
-#
-#
-'''
 # Time complexity of the naive recursive alg would be an O(2^(m*n)):
-space complexity O(n)
-
-
-
-but for the memoized solution
-time complexity is O(m*n)
-space complexity stays the same
-'''
+# space complexity O(n)
 #
 #
 #
-#
+# but for the memoized solution
+# time complexity is O(m*n)
+# space complexity stays the same
 #
 #
