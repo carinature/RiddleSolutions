@@ -1,5 +1,5 @@
-# HowSum in Dynamic Programing
-# return the list of elements in the arr whose sum equals target
+# BestSum in Dynamic Programing
+# return the "best" (shortest) list of elements in the arr whose sum equals target
 #
 
 import timeit
@@ -7,59 +7,58 @@ from typing import Dict, List, Set, Optional
 
 
 # # # Solution 1 - Recursive (Naive) - O(2^(n+m) )
-def HowSum(target_sum: int, arr: List[int]) -> Optional[List[int]]:
-    if target_sum == 0:
-        return []
-    if target_sum < 0:
-        return None
+def BestSum(target_sum: int, arr: List[int]) -> Optional[List[int]]:
+    if target_sum == 0: return []
+    if target_sum < 0: return None
+    res: List[int] = None
     for num in arr:
-        res = HowSum(target_sum - num, arr)
-        if res is not None:
-            res.append(num)
-            return res
-    return None
+        sol = BestSum(target_sum - num, arr)
+        if sol is not None:
+            if res is None or len(res) - 1 > len(sol):
+                res = sol + [num]
+    return res
 
 
 # # # Solution 2 - Recursive with Memoization - O(n)
-import typing
-def HowSum(target_sum: int, arr: List[int], memo=None) -> Optional[List[int]]:
-    if memo is None:
-        memo: Dict[int, List[int]] = dict()
+def BestSum(target_sum: int, arr: List[int], memo=None) -> Optional[List[int]]:
+    if memo is None: memo: Dict[int, List[int]] = dict()
 
     if target_sum in memo: return memo[target_sum]
     if target_sum == 0: return []
     if target_sum < 0: return None
 
+    res: List[int] = None
+
     for num in arr:
-        res = HowSum(target_sum - num, arr, memo)
-        if res is not None:
-            memo[target_sum] = res + [num]
-            return memo[target_sum]
-    memo[target_sum] = None
-    return None
+        sol = BestSum(target_sum - num, arr, memo)
+        if sol is not None:
+            if res is None or len(res) - 1 > len(sol):
+                res = sol + [num]
+    memo[target_sum] = res
+    return res
 
 
 def testing():
-    result = HowSum(7, [5, 3, 4])
+    result = BestSum(7, [5, 3, 4])
+    # print(f'result: {result}')
     assert ([4, 3] == result)
 
-    result = HowSum(0, [5, 3, 4])
+    result = BestSum(0, [5, 3, 4])
     assert ([] == result)
 
-    result = HowSum(7, [5, 7])
-    # print(f'result: {result}')
+    result = BestSum(7, [5, 7])
     assert ([7] == result)
 
-    result = HowSum(7, [5, 3, 4, 7])
-    assert ([7] == result or [4, 3] == result)
+    result = BestSum(7, [5, 3, 4, 7])
+    assert ([7] == result)  # or [4, 3] == result)
 
-    result = HowSum(7, [2, 4])
+    result = BestSum(7, [2, 4])
     assert (None == result)
 
-    result = HowSum(8, [2, 3, 5])
-    assert ([2, 2, 2, 2] == result or [2, 3, 3] == result or [5, 3] == result)
+    result = BestSum(8, [2, 3, 5])
+    assert ([5, 3] == result)
 
-    result = HowSum(300, [7, 14])
+    result = BestSum(300, [7, 14])
     assert (None == result)
 
 
