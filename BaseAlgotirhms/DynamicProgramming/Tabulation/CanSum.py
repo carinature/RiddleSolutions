@@ -6,7 +6,7 @@ import timeit
 from typing import Dict, List, Set
 
 
-# Solution 1 - Iterative with Tabulation -    O(n)
+# Solution 1 - Iterative with Tabulation -    O(n*m)
 def CanSum(target_sum: int, arr: List[int]) -> bool:
     tbl: List[bool] = [False] * (target_sum + 1)
 
