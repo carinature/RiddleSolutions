@@ -3,15 +3,15 @@
 # on a mXn grid
 
 import timeit
-from typing import Dict
+from typing import Dict, List
 
 
-# Solution 1 - Iterative with Tabulation -    O(n)
+# Solution 1 - Iterative with Tabulation -    O(n*m)
 def GridTraveler(m: int, n: int) -> int:
     if not m * n:
         return 0
 
-    tbl = [[0] * (n + 1) for _ in range(m + 1)]
+    tbl: List[List[int]] = [[0] * (n + 1) for _ in range(m + 1)]
     tbl[1] = [1 if i else 0 for i in range(n + 1)]
 
     for i in range(2, m + 1):
@@ -51,19 +51,3 @@ def testing():
 if __name__ == '__main__':
     print("\n Finished in --- %.5f seconds ---" %
           (timeit.timeit(testing, number=10)))
-
-#
-#
-#
-#
-#
-# Time complexity of the naive recursive alg would be an O(2^(m*n)):
-# space complexity O(n)
-#
-#
-#
-# but for the memoized solution
-# time complexity is O(m*n)
-# space complexity stays the same
-#
-#
