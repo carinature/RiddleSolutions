@@ -6,33 +6,19 @@ import timeit
 from typing import Dict
 
 
-# Solution 1 - Recursive (Naive) - O(2^(n+m) )
+# Solution 1 - Iterative with Tabulation -    O(n)
 def GridTraveler(m: int, n: int) -> int:
-    # Tnai Azira
-    if 1 == n and 1 == m:
-        return 1
-    # Sanity Check
-    if not m or not n:
+    if not m * n:
         return 0
 
-    return GridTraveler(m - 1, n) + GridTraveler(m, n - 1)
+    tbl = [[0] * (n + 1) for _ in range(m + 1)]
+    tbl[1] = [1 if i else 0 for i in range(n + 1)]
 
+    for i in range(2, m + 1):
+        for j in range(1, n + 1):
+            tbl[i][j] = tbl[i - 1][j] + tbl[i][j - 1]
 
-# Solution 2 - Recursive with Memoization - O(n)
-def GridTraveler(m: int, n: int, memo: Dict[str, int] = dict()) -> int:
-    key = str(m) + ',' + str(n)
-    if key in memo:
-        return memo[key]
-    # Tnai Azira
-    if 1 == n and 1 == m:
-        memo[key] = 1
-        return 1
-    # Sanity Check
-    if 0 == m or 0 == n:
-        memo[key] = 0
-        return 0
-    memo[key] = GridTraveler(m - 1, n) + GridTraveler(m, n - 1)
-    return memo[key]
+    return tbl[m][n]
 
 
 def testing():
@@ -64,7 +50,7 @@ def testing():
 
 if __name__ == '__main__':
     print("\n Finished in --- %.5f seconds ---" %
-          (timeit.timeit(testing, number=10000)))
+          (timeit.timeit(testing, number=10)))
 
 #
 #
