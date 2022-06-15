@@ -1,6 +1,7 @@
 #
 #   Date - 01.02.2022
 #   Date - 18.05.2022
+#   Date - 15.06.2022 - fin!
 #
 #
 # Given an integer array nums, find the contiguous subarray (containing at least one number)
@@ -43,59 +44,50 @@ import timeit
 from typing import List, Optional, Tuple
 
 
-def maxSubArray(nums: List[int]) -> int:
-    pass
-    # if len(nums) == 1:
-    #     return nums[0]
-    #
-    # sums: List[int] = [0] * (len(nums)+1)
-    #
-    # for i in range(1, 1+len(nums)):
-    #     sums[i] = sums[i-1] + nums[i-1]
-    #
-    # mx = max(sums[1:])
-    # mn = min(sums[: sums.index(mx)])
-    # imn = sums.index(mn)
-    #
-    # # return mx-sums[imn-1]
-    # # return mx-nums[imn]
-    # return mx-mn
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        for i in range(1, len(nums)):
+            if nums[i] < nums[i - 1] + nums[i]:
+                nums[i] += nums[i - 1]
+        return max(nums)
 
 
 def testing():
-    result = maxSubArray(nums=[-2, 1, -3, 4, -1, 2, 1, -5, 4])
+    sol = Solution()
+
+    result = sol.maxSubArray(nums=[-2, 1, -3, 4, -1, 2, 1, -5, 4])
     print(f"result: {result}")
     assert (6 == result)
 
-    result = maxSubArray(nums=[1])
+    result = sol.maxSubArray(nums=[1])
     print(f"result: {result}")
     assert (1 == result)
 
-    result = maxSubArray(nums=[5, 4, -1, 7, 8])
+    result = sol.maxSubArray(nums=[5, 4, -1, 7, 8])
     print(f"result: {result}")
     assert (23 == result)
 
-    result = maxSubArray(nums=[-1])
+    result = sol.maxSubArray(nums=[-1])
     print(f"result: {result}")
     assert (-1 == result)
 
-    result = maxSubArray(nums=[-2, -1])
+    result = sol.maxSubArray(nums=[-2, -1])
     print(f"result: {result}")
     assert (-1 == result)
 
-    result = maxSubArray(nums=[-1, -2])
+    result = sol.maxSubArray(nums=[-1, -2])
     print(f"result: {result}")
     assert (-1 == result)
 
-    result = maxSubArray(nums=[-1, 0, -2])
+    result = sol.maxSubArray(nums=[-1, 0, -2])
     print(f"result: {result}")
     assert (0 == result)
 
-    result = maxSubArray(nums=[-2, 1])
+    result = sol.maxSubArray(nums=[-2, 1])
     print(f"result: {result}")
     assert (1 == result)
 
-    result = maxSubArray(nums=[-2, -1, -2])
+    result = sol.maxSubArray(nums=[-2, -1, -2])
     print(f"result: {result}")
     assert (-1 == result)
 
