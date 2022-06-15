@@ -130,13 +130,13 @@ class Solution:
 
 def testing():
     sol = Solution()
-    nums =[3,2,0,-4]
+    nums = [3, 2, 0, -4]
     pos = 1
     res = sol.hasCycle(ListNode.create_list_node(nums).update_pos(pos))
     # print(f'res {res}')
     assert (True == res)
 
-    nums = [1,2]
+    nums = [1, 2]
     pos = 0
     res = sol.hasCycle(ListNode.create_list_node(nums).update_pos(pos))
     assert (True == res)
