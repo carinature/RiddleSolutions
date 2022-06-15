@@ -56,9 +56,11 @@ class ListNode:
     def __repr__(self):
         tail: ListNode = self
         res: List[str] = []
-        while tail:
+        max_repe_len = 30  # in case of loops in linked list ..
+        while tail and max_repe_len:
             res.append(str(tail.val))
             tail = tail.next
+            max_repe_len -= 1
         return ' --> '.join(res)
 
 
@@ -73,21 +75,22 @@ class Solution:
 
 def testing():
     sol = Solution()
+
     nums = [0, 1, 0, 3, 12]
-    sol.some_function(ListNode.create_list_node(nums))
-    assert ([1, 3, 12, 0, 0] == nums)
+    res = sol.some_function(ListNode.create_list_node(nums))
+    assert ([1, 3, 12, 0, 0] == res)
 
     nums = [0]
-    sol.some_function(ListNode.create_list_node(nums))
-    assert ([0] == nums)
+    res = sol.some_function(ListNode.create_list_node(nums))
+    assert ([0] == res)
 
     nums = [0, -1]
-    sol.some_function(ListNode.create_list_node(nums))
-    assert ([-1, 0] == nums)
+    res = sol.some_function(ListNode.create_list_node(nums))
+    assert ([-1, 0] == res)
 
     nums = [0, 0]
-    sol.some_function(ListNode.create_list_node(nums))
-    assert ([0, 0] == nums)
+    res = sol.some_function(ListNode.create_list_node(nums))
+    assert ([0, 0] == res)
 
 
 if __name__ == '__main__':
