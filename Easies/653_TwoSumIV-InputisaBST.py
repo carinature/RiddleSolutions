@@ -1,9 +1,33 @@
 #
-#   Date - 01.06.2022
+#   Date - 19.06.2022
 #
 #
-# template for binary tree questions
-# including some basic DBG functionality - create from array (sorted or not), to list, repr...
+# 653. Two Sum IV - Input is a BST
+# Easy
+#
+# Given the root of a Binary Search Tree and a target number k,
+# return true if there exist two elements in the BST such that their sum is equal to the given target.
+#
+#
+#
+# Example 1:
+#
+# Input: root = [5,3,6,2,4,null,7], k = 9
+# Output: true
+#
+# Example 2:
+#
+# Input: root = [5,3,6,2,4,null,7], k = 28
+# Output: false
+#
+#
+#
+# Constraints:
+#
+#     The number of nodes in the tree is in the range [1, 104].
+#     -104 <= Node.val <= 104
+#     root is guaranteed to be a valid binary search tree.
+#     -105 <= k <= 105
 #
 #
 
@@ -19,10 +43,17 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def sortedArrayToBST(self, nums: List[int]) -> Optional['TreeNode']:
+        if not nums:
+            return None
+        return TreeNode(nums[len(nums) // 2],
+                        self.sortedArrayToBST(nums[:len(nums) // 2]),
+                        self.sortedArrayToBST(nums[len(nums) // 2 + 1:])
+                        )
+
     def arrayToBST(nums: List[int]) -> Optional['TreeNode']:
         if not nums:
             return None
-
         root = TreeNode(nums.pop(0))
         st = [root]
         while nums:
@@ -35,14 +66,6 @@ class TreeNode:
                 st += [node.left, node.right]
         # print(f'root {root}')
         return root
-
-    def sortedArrayToBST(self, nums: List[int]) -> Optional['TreeNode']:
-        if not nums:
-            return None
-        return TreeNode(nums[len(nums) // 2],
-                        self.sortedArrayToBST(nums[:len(nums) // 2]),
-                        self.sortedArrayToBST(nums[len(nums) // 2 + 1:])
-                        )
 
     # def __eq__(self, other: List[int]):
     #     temp = self
@@ -77,34 +100,35 @@ class TreeNode:
 
 
 class Solution:
-    def some_function(self, root: Optional['TreeNode']) -> None:
-        """
-        Do not return anything, modify root in-place instead.
-        """
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+        # print(f'root: {root}')
 
-        print(f'root: {root}')
+        st = [root]
+        s = set()
+        for node in st:
+            if node is not None:
+                if node.val in s:
+                    return True
+                s.add(k - node.val)
+                st += [node.left, node.right]
+
+        return False
 
 
 def testing():
     sol = Solution()
 
-    root = [0, 1, 0, 3, 12]
-    res = sol.some_function(TreeNode.arrayToBST(root))
-    assert ([1, 3, 12, 0, 0] == root)
+    nums = [5, 3, 6, 2, 4, None, 7]
+    k = 9
+    res = sol.findTarget(TreeNode.arrayToBST(nums), k)
+    assert (True == res)
 
-    root = [0]
-    res = sol.some_function(TreeNode.arrayToBST(root))
-    assert ([0] == root)
-
-    root = [0, -1]
-    res = sol.some_function(TreeNode.arrayToBST(root))
-    assert ([-1, 0] == root)
-
-    root = [0, 0]
-    res = sol.some_function(TreeNode.arrayToBST(root))
-    assert ([0, 0] == root)
+    nums = [5, 3, 6, 2, 4, None, 7]
+    k = 28
+    res = sol.findTarget(TreeNode.arrayToBST(nums), k)
+    assert (False == res)
 
 
 if __name__ == '__main__':
     print("\n Finished in --- %.5f seconds ---" % (
-        timeit.timeit(testing, number=10)))
+        timeit.timeit(testing, number=1000)))

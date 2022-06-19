@@ -2,25 +2,8 @@
 #   Date - 01.06.2022
 #
 #
-# Given an integer array root, move all 0's to the end of it
-# while maintaining the relative order of the non-zero elements.
-#
-# Note that you must do this in-place without making a copy of the array.
-#
-#
-#       Example 1:
-# Input: root = [0,1,0,3,12]
-# Output: [1,3,12,0,0]
-#
-#       Example 2:
-# Input: root = [0]
-# Output: [0]
-#
-#
-#       Constraints:
-#     1 <= root.length <= 104
-#     -231 <= root[i] <= 231 - 1
-#
+# template for binary tree questions
+# including some basic DBG functionality - create from array (sorted or not), to list, repr...
 #
 
 
@@ -35,11 +18,30 @@ class TreeNode:
         self.left = left
         self.right = right
 
-    def create_tree(root: List[int]) -> 'TreeNode':
-        if not root:
-            return TreeNode()
-        head: TreeNode = TreeNode(root.pop(0), root.pop(1), root.pop(2))
-        # for num in root[3:]:
+    def arrayToBST(nums: List[int]) -> Optional['TreeNode']:
+        if not nums:
+            return None
+
+        root = TreeNode(nums.pop(0))
+        st = [root]
+        while nums:
+            node = st.pop(0)
+            if node:
+                l = nums.pop(0)
+                r = nums.pop(0)
+                node.left = TreeNode(l) if l is not None else None
+                node.right = TreeNode(r) if r is not None else None
+                st += [node.left, node.right]
+        # print(f'root {root}')
+        return root
+
+    def sortedArrayToBST(self, nums: List[int]) -> Optional['TreeNode']:
+        if not nums:
+            return None
+        return TreeNode(nums[len(nums) // 2],
+                        self.sortedArrayToBST(nums[:len(nums) // 2]),
+                        self.sortedArrayToBST(nums[len(nums) // 2 + 1:])
+                        )
 
     # def __eq__(self, other: List[int]):
     #     temp = self
@@ -86,22 +88,22 @@ def testing():
     sol = Solution()
 
     root = [0, 1, 0, 3, 12]
-    sol.some_function(TreeNode.create_tree(root))
+    res = sol.some_function(TreeNode.arrayToBST(root))
     assert ([1, 3, 12, 0, 0] == root)
 
     root = [0]
-    sol.some_function(TreeNode.create_tree(root))
+    res = sol.some_function(TreeNode.arrayToBST(root))
     assert ([0] == root)
 
     root = [0, -1]
-    sol.some_function(TreeNode.create_tree(root))
+    res = sol.some_function(TreeNode.arrayToBST(root))
     assert ([-1, 0] == root)
 
     root = [0, 0]
-    sol.some_function(TreeNode.create_tree(root))
+    res = sol.some_function(TreeNode.arrayToBST(root))
     assert ([0, 0] == root)
 
 
 if __name__ == '__main__':
     print("\n Finished in --- %.5f seconds ---" % (
-        timeit.timeit(testing, number=100)))
+        timeit.timeit(testing, number=10)))

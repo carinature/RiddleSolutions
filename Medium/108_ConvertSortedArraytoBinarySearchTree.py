@@ -5,9 +5,11 @@
 # 108. Convert Sorted Array to Binary Search Tree
 # Easy
 #
-# Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+# Given an integer array nums where the elements are sorted in ascending order,
+# convert it to a height-balanced binary search tree.
 #
-# A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+# A height-balanced binary tree is a binary tree in which
+# the depth of the two subtrees of every node never differs by more than one.
 #
 #
 #
@@ -80,7 +82,6 @@ class TreeNode:
         # remove tail Nones:
         while res[-1] is None:
             res.pop()
-        print(f'res to list: {res}')
         return res
 
 
@@ -99,8 +100,8 @@ def testing():
 
     # sol.sortedArrayToBST(TreeNode.create_tree(root))
     res = sol.sortedArrayToBST(nums=[-10, -3, 0, 5, 9])
-    print(f'res {res}')
-    print(f'res.to_list() {res.to_list()}')
+    # print(f'res {res}')
+    # print(f'res.to_list() {res.to_list()}')
     assert ([0, -3, 9, -10, None, 5] == res.to_list()
             or [0, -10, 5, None, -3, None, 9] == res.to_list())
 
