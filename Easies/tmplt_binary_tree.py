@@ -54,6 +54,25 @@ class TreeNode:
     #             return False
     #     return True
 
+    def __repr__(self):
+        return f'{self.val} [LEFT {self.left}, RIGHT {self.right}]'
+
+    def to_list(self):
+        st = [self]
+        res = []
+        while st:
+            node = st.pop(0)
+            if node:
+                res.append(node.val)
+                st += [node.left, node.right]
+            else:
+                res.append(None)
+        # remove tail Nones:
+        while not res[-1]:
+            res.pop()
+        print(f'res to list: {res}')
+        return res
+
 
 class Solution:
     def some_function(self, root: Optional['TreeNode']) -> None:
