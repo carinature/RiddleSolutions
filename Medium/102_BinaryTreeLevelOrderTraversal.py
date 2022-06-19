@@ -2,43 +2,35 @@
 #   Date - 16.06.2022
 #
 #
-# 112. Path Sum
-# Easy
+# 102. Binary Tree Level Order Traversal
+# Medium
 #
-# Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
-#
-# A leaf is a node with no children.
+# Given the root of a binary tree, return the level order traversal of its nodes' values.
+# (i.e., from left to right, level by level).
 #
 #
 #
 # Example 1:
 #
-# Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
-# Output: true
-# Explanation: The root-to-leaf path with the target sum is shown.
+# Input: root = [3,9,20,null,null,15,7]
+# Output: [[3],[9,20],[15,7]]
 #
 # Example 2:
 #
-# Input: root = [1,2,3], targetSum = 5
-# Output: false
-# Explanation: There two root-to-leaf paths in the tree:
-# (1 --> 2): The sum is 3.
-# (1 --> 3): The sum is 4.
-# There is no root-to-leaf path with sum = 5.
+# Input: root = [1]
+# Output: [[1]]
 #
 # Example 3:
 #
-# Input: root = [], targetSum = 0
-# Output: false
-# Explanation: Since the tree is empty, there are no root-to-leaf paths.
+# Input: root = []
+# Output: []
 #
 #
 #
 # Constraints:
 #
-#     The number of nodes in the tree is in the range [0, 5000].
+#     The number of nodes in the tree is in the range [0, 2000].
 #     -1000 <= Node.val <= 1000
-#     -1000 <= targetSum <= 1000
 #
 #
 
@@ -75,16 +67,29 @@ class TreeNode:
 
 
 class Solution:
-    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        if not root:
-            return False
-        if not root.left and not root.right:
-            return root.val == targetSum
-        return self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val)
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
+        res: List[List[int]] = []
+        st: List[TreeNode] = [root]
+
+        while st:
+            temp_res = []
+            temp_st = []
+
+            for node in st:
+                if node:
+                    temp_st += [node.left, node.right]
+                    temp_res += [node.val]
+
+            st = temp_st
+            if temp_res:
+                res.append(temp_res)
+
+        return res
 
 def testing():
     sol = Solution()
+
     # root = [0, 1, 0, 3, 12]
     # sol.some_function(TreeNode.create_tree(root))
     # assert ([1, 3, 12, 0, 0] == root)
