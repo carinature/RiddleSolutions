@@ -1,13 +1,14 @@
-from BaseAlgotirhms.BinaryTree import DFS, BFS
+from BaseAlgotirhms.BinaryTree import DFS, BFS, Search
+
+
 # from BaseAlgotirhms.BinaryTree.DFS import dfs
 
 
 class Node:
-    def __init__(self, val=None, left=None, right=None):
-        self.val = val
+    def __init__(self, val: str = None, left=None, right=None):
+        self.val: str = val
         self.left = left
         self.right = right
-
 
 
 if __name__ == '__main__':
@@ -24,18 +25,21 @@ if __name__ == '__main__':
     b.right = e
     c.right = f
 
-    #      a
-    #    /  \
-    #   b    c
-    #  / \    \
-    # d   e    f
+    #
+    #     a
+    #    / \
+    #   b   c
+    #  / \   \
+    # d   e   f
+    #
 
-    res = DFS.iterative(a)
-    print(f'res: {res}')
-    res = DFS.recursive(a)
-    print(f'res: {res}')
+    print(f'DFS.iterative(a): {DFS.iterative(a)}')
+    print(f'DFS.recursive(a): {DFS.recursive(a)}')
 
-    res = BFS.iterative(a)
-    print(f'res: {res}')
-    res = BFS.recursive(a)
-    print(f'res: {res}')
+    print(f'BFS.iterative(a): {BFS.iterative(a)}')
+    print(f'BFS.recursive(a): {BFS.recursive(a)}')
+
+    print(f'Search.iterative(a): {Search.iterative(a, "e")}')
+    print(f'Search.recursive(a): {Search.recursive(a, "e")}')
+    print(f'Search.iterative(a): {Search.iterative(a, "x")}')
+    print(f'Search.recursive(a): {Search.recursive(a, "x")}')

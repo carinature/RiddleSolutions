@@ -76,4 +76,4 @@ def testing():
 
 if __name__ == '__main__':
     print("\n Finished in --- %.5f seconds ---" %
-          (timeit.timeit(testing, number=100)))
+          (timeit.timeit(testing, number=1)))

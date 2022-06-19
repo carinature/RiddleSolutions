@@ -36,10 +36,12 @@ def recursive(root):
 #     b.right = e
 #     c.right = f
 #
-#     #      a
-#     #    /  \
-#     #   b    c
-#     #  / \    \
-#     # d   e    f
+#   #
+#   #        a
+#   #       / \
+#   #      b   c
+#   #     / \   \
+#   #    d   e   f
+#   #
 #
 #     dfs(a)

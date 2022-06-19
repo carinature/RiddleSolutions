@@ -3,24 +3,28 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+#
 
 
-def iterative(root):
-    res = []
+# BFS
+def iterative(root, val: str) -> bool:
     st = [root]
     while st:
         node = st.pop()
         if node:
-            res.append(node.val)
-            st.append(node.right)
-            st.append(node.left)
-    return res
+            if val == node.val:
+                return True
+            st += [node.left, node.right]
+    return False
 
 
-def recursive(root):
+# DFS
+def recursive(root, val: str) -> bool:
     if not root:
-        return []
-    return [root.val] + recursive(root.left) + recursive(root.right)
+        return False
+    if root.val == val:
+        return True
+    return recursive(root.left, val) or recursive(root.right, val)
 
 # if __name__ == '__main__':
 #     a = Node('a')
@@ -36,12 +40,10 @@ def recursive(root):
 #     b.right = e
 #     c.right = f
 #
-#   #    
-#   #        a
-#   #       / \
-#   #      b   c
-#   #     / \   \
-#   #    d   e   f
-#   #
+#     #      a
+#     #    /  \
+#     #   b    c
+#     #  / \    \
+#     # d   e    f
 #
 #     dfs(a)
