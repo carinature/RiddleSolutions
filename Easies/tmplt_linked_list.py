@@ -64,6 +64,14 @@ class ListNode:
         return ' --> '.join(res)
 
 
+def to_list(ln: Optional[ListNode]) -> List[int]:
+    l = []
+    while ln:
+        l.append(ln.val)
+        ln = ln.next
+    return l
+
+
 class Solution:
     def some_function(self, nums: Optional['ListNode']) -> None:
         """
