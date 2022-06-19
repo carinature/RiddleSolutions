@@ -70,7 +70,6 @@ class TreeNode:
         # remove tail Nones:
         while not res[-1]:
             res.pop()
-        print(f'res to list: {res}')
         return res
 
 

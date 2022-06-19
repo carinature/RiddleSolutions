@@ -39,7 +39,14 @@ class TreeNode:
         if not root:
             return TreeNode()
         head: TreeNode = TreeNode(root.pop(0), root.pop(1), root.pop(2))
-        # for num in root[3:]:
+
+    def sortedArrayToBST(self, nums: List[int]) -> Optional['TreeNode']:
+        if not nums:
+            return None
+        return TreeNode(nums[len(nums) // 2],
+                        self.sortedArrayToBST(nums[:len(nums) // 2]),
+                        self.sortedArrayToBST(nums[len(nums) // 2 + 1:])
+                        )
 
     # def __eq__(self, other: List[int]):
     #     temp = self
@@ -70,7 +77,6 @@ class TreeNode:
         # remove tail Nones:
         while not res[-1]:
             res.pop()
-        print(f'res to list: {res}')
         return res
 
 
